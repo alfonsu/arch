@@ -53,7 +53,7 @@ echo [org.kde.kdecoration2] >> $HOME/.config/kwinrc
 echo ButtonsOnRight=IAX >> $HOME/.config/kwinrc
 ;;
 3)
-sudo rm -f $HOME/.config/ksplashrc
+rm -f $HOME/.config/ksplashrc
 echo [KSplash] >> $HOME/.config/ksplashrc
 echo Engine=none >> $HOME/.config/ksplashrc
 echo Theme=None >> $HOME/.config/ksplashrc
