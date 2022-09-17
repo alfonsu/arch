@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cmd=(dialog --cancel-label "Back" --title "Setup Plasma Pure" --separate-output --checklist "Select options:" 41 120 35)
+cmd=(dialog --cancel-label "Exit" --title "Setup Plasma Pure" --separate-output --checklist "Select options:" 41 112 35)
 options=(
 1 "System Settings - Swich to Icon View" on
 2 "System Settings - Apperance - Window Decoration - Titlebar Buttons - Disable Context help" on
@@ -18,24 +18,24 @@ options=(
 14 "System Settings - Inpute Devices - Keyboard - Advanced - Enable Configure keyboard options" on
 15 "System Settings - Inpute Devices - Keyboard - Advanced - Enable Key sequence to kill the X server" on
 16 "System Settings - Inpute Devices - Keyboard - Advanced - Enable Switching to another layout" on
-17 "Speed up AUR builds" on
-18 "Install Youtubedl-GUI" on
-19 "Update KDE Configs with Apps" on
-20 "Change SDDM Theme to Breeze" on
-21 "Add Virtual Keyboard to SDDM" on
-22 "Change Swappiness to 10" on
-23 "Enable Timesync and Bluetooth Service" on
-24 "Enable Fstrim (for SSD optimization)" on
-25 "Disable Spectre and Meltdown" on
-26 "Enable Grub Last Choice (Not Work for Btrfs)" on
-27 "Enable Vimix Grub Theme" on
-28 "Install Nohang - correctly prevent out of memory" on
-29 "Install and Enable Zram-Generator" on
-30 "Install Ananicy - manage processes IO and CPU priorities" on
-31 "Install and Enable Printer and Scanner Support" on
-32 "Auto Mount All NTFS Partitions to fstab" on
-33 "Install Latest Zen Kernel and Headers" on
-34 "Update Grub" on
+17 "Speed up AUR builds" off
+18 "Install Youtubedl-GUI" off
+19 "Update KDE Configs with Apps" off
+20 "Change SDDM Theme to Breeze" off
+21 "Add Virtual Keyboard to SDDM" off
+22 "Change Swappiness to 10" off
+23 "Enable Timesync and Bluetooth Service" off
+24 "Enable Fstrim (for SSD optimization)" off
+25 "Disable Spectre and Meltdown" off
+26 "Enable Grub Last Choice (Not Work for Btrfs)" off
+27 "Enable Vimix Grub Theme" off
+28 "Install Nohang - correctly prevent out of memory" off
+29 "Install and Enable Zram-Generator" off
+30 "Install Ananicy - manage processes IO and CPU priorities" off
+31 "Install and Enable Printer and Scanner Support" off
+32 "Auto Mount All NTFS Partitions to fstab" off
+33 "Install Latest Zen Kernel and Headers" off
+34 "Update Grub" off
 )
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -44,13 +44,21 @@ do
 case $choice in
 1)
 echo >> $HOME/.config/systemsettingsrc
-echo [Main] >> $HOME/.config/systemsettingsrc
-echo ActiveView=systemsettings_icon_mode >> $HOME/.config/systemsettingsrc
+if [ "$(grep "\[Main\]" $HOME/.config/systemsettingsrc)" == "[Main]" ] ; then
+    sed -i '/ActiveView=/d' $HOME/.config/systemsettingsrc
+else
+    echo "[Main]" >> $HOME/.config/systemsettingsrc
+fi
+sed -i '/\[Main\]/a\ActiveView=systemsettings_icon_mode' $HOME/.config/systemsettingsrc
 ;;
 2)
 echo >> $HOME/.config/kwinrc
-echo [org.kde.kdecoration2] >> $HOME/.config/kwinrc
-echo ButtonsOnRight=IAX >> $HOME/.config/kwinrc
+if [ "$(grep "\[org.kde.kdecoration2\]" $HOME/.config/kwinrc)" == "[org.kde.kdecoration2]" ] ; then
+    sed -i '/ButtonsOnRight=/d' $HOME/.config/kwinrc
+else
+    echo "[org.kde.kdecoration2]" >> $HOME/.config/kwinrc
+fi
+sed -i '/\[org.kde.kdecoration2\]/a\ButtonsOnRight=IAX' $HOME/.config/kwinrc
 ;;
 3)
 rm -f $HOME/.config/ksplashrc
@@ -60,65 +68,125 @@ echo Theme=None >> $HOME/.config/ksplashrc
 ;;
 4)
 echo >> $HOME/.config/kdeglobals
-echo [KDE] >> $HOME/.config/kdeglobals
-echo AnimationDurationFactor=0.7071067811865475 >> $HOME/.config/kdeglobals
+if [ "$(grep "\[KDE\]" $HOME/.config/kdeglobals)" == "[KDE]" ] ; then
+    sed -i '/AnimationDurationFactor=/d' $HOME/.config/kdeglobals
+else
+    echo "[KDE]" >> $HOME/.config/kdeglobals
+fi
+sed -i '/\[KDE\]/a\AnimationDurationFactor=0.7071067811865475' $HOME/.config/kdeglobals
 ;;
 5)
 echo >> $HOME/.config/kdeglobals
-echo [KDE] >> $HOME/.config/kdeglobals
-echo SingleClick=false >> $HOME/.config/kdeglobals
+if [ "$(grep "\[KDE\]" $HOME/.config/kdeglobals)" == "[KDE]" ] ; then
+    sed -i '/SingleClick=/d' $HOME/.config/kdeglobals
+else
+    echo "[KDE]" >> $HOME/.config/kdeglobals
+fi
+sed -i '/\[KDE\]/a\SingleClick=false' $HOME/.config/kdeglobals
 ;;
 6)
 echo >> $HOME/.config/kscreenlockerrc
-echo [Daemon] >> $HOME/.config/kscreenlockerrc
-echo Autolock=false >> $HOME/.config/kscreenlockerrc
+if [ "$(grep "\[Daemon\]" $HOME/.config/kscreenlockerrc)" == "[Daemon]" ] ; then
+    sed -i '/Autolock=/d' $HOME/.config/kscreenlockerrc
+else
+    echo "[Daemon]" >> $HOME/.config/kscreenlockerrc
+fi
+sed -i '/\[Daemon\]/a\Autolock=false' $HOME/.config/kscreenlockerrc
 ;;
 7)
 echo >> $HOME/.config/kscreenlockerrc
-echo [Daemon] >> $HOME/.config/kscreenlockerrc
-echo LockOnResume=false >> $HOME/.config/kscreenlockerrc
+if [ "$(grep "\[Daemon\]" $HOME/.config/kscreenlockerrc)" == "[Daemon]" ] ; then
+    sed -i '/LockOnResume=/d' $HOME/.config/kscreenlockerrc
+else
+    echo "[Daemon]" >> $HOME/.config/kscreenlockerrc
+fi
+sed -i '/\[Daemon\]/a\LockOnResume=false' $HOME/.config/kscreenlockerrc
 ;;
 8)
 echo >> $HOME/.config/kglobalshortcutsrc
-echo [org.kde.konsole.desktop] >> $HOME/.config/kglobalshortcutsrc
-echo NewTab=none,none,Open a New Tab >> $HOME/.config/kglobalshortcutsrc
-echo NewWindow=none,none,Open a New Window >> $HOME/.config/kglobalshortcutsrc
-echo _k_friendly_name=Konsole >> $HOME/.config/kglobalshortcutsrc
-echo _launch=Ctrl+Alt+T,Ctrl+Alt+T,Konsole >> $HOME/.config/kglobalshortcutsrc
+if [ "$(grep "\[org.kde.konsole.desktop\]" $HOME/.config/kglobalshortcutsrc)" == "[org.kde.konsole.desktop]" ] ; then
+    sed -i '/Konsole/d' $HOME/.config/kglobalshortcutsrc
+    sed -i '/NewWindow=/d' $HOME/.config/kglobalshortcutsrc
+    sed -i '/NewTab=/d' $HOME/.config/kglobalshortcutsrc
+else
+    echo "[org.kde.konsole.desktop]" >> $HOME/.config/kglobalshortcutsrc
+fi
+sed -i '/\[org.kde.konsole.desktop\]/a\_launch=Ctrl+Alt+T,Ctrl+Alt+T,Konsole' $HOME/.config/kglobalshortcutsrc
+sed -i '/\[org.kde.konsole.desktop\]/a\_k_friendly_name=Konsole' $HOME/.config/kglobalshortcutsrc
+sed -i '/\[org.kde.konsole.desktop\]/a\NewWindow=none,none,Open a New Window' $HOME/.config/kglobalshortcutsrc
+sed -i '/\[org.kde.konsole.desktop\]/a\NewTab=none,none,Open a New Tab' $HOME/.config/kglobalshortcutsrc
 ;;
 9)
 sed -i '/Suspend Compositing=/c\Suspend Compositing=Ctrl+Alt+E,Alt+Shift+F12,Suspend Compositing' $HOME/.config/kglobalshortcutsrc
 ;;
 10)
 echo >> $HOME/.config/ksmserverrc
-echo [General] >> $HOME/.config/ksmserverrc
-echo loginMode=emptySession >> $HOME/.config/ksmserverrc
+if [ "$(grep "\[General\]" $HOME/.config/ksmserverrc)" == "[General]" ] ; then
+    sed -i '/loginMode=/d' $HOME/.config/ksmserverrc
+else
+    echo "[General]" >> $HOME/.config/ksmserverrc
+fi
+sed -i '/\[General\]/a\loginMode=emptySession' $HOME/.config/ksmserverrc
 ;;
 11)
 echo >> $HOME/.config/kcminputrc
-echo [Keyboard] >> $HOME/.config/kcminputrc
-echo NumLock=0 >> $HOME/.config/kcminputrc
+if [ "$(grep "\[Keyboard\]" $HOME/.config/kcminputrc)" == "[Keyboard]" ] ; then
+    sed -i '/NumLock=/d' $HOME/.config/kcminputrc
+else
+    echo "[Keyboard]" >> $HOME/.config/kcminputrc
+fi
+sed -i '/\[Keyboard\]/a\NumLock=0' $HOME/.config/kcminputrc
 ;;
 12)
 echo >> $HOME/.config/kxkbrc
-echo [Layout] >> $HOME/.config/kxkbrc
-echo Options= >> $HOME/.config/kxkbrc
-echo LayoutList=us >> $HOME/.config/kxkbrc
-echo Use=true >> $HOME/.config/kxkbrc
+if [ "$(grep "\[Layout\]" $HOME/.config/kxkbrc)" == "[Layout]" ] ; then
+    sed -i '/LayoutList=/d' $HOME/.config/kxkbrc
+    sed -i '/Use=/d' $HOME/.config/kxkbrc
+else
+    echo "[Layout]" >> $HOME/.config/kxkbrc
+fi
+sed -i '/\[Layout\]/a\Use=true' $HOME/.config/kxkbrc
+sed -i '/\[Layout\]/a\LayoutList=us' $HOME/.config/kxkbrc
 ;;
 13)
-echo DisplayNames=, >> $HOME/.config/kxkbrc
-echo VariantList=,phonetic >> $HOME/.config/kxkbrc
-sed -i 's/us/us,bg/g' $HOME/.config/kxkbrc
+echo >> $HOME/.config/kxkbrc
+if [ "$(grep "\[Layout\]" $HOME/.config/kxkbrc)" == "[Layout]" ] ; then
+    sed -i '/DisplayNames=/d' $HOME/.config/kxkbrc
+    sed -i '/VariantList=/d' $HOME/.config/kxkbrc
+    sed -i '/LayoutList=/d' $HOME/.config/kxkbrc
+else
+    echo "[Layout]" >> $HOME/.config/kxkbrc
+fi
+sed -i '/\[Layout\]/a\VariantList=,phonetic' $HOME/.config/kxkbrc
+sed -i '/\[Layout\]/a\DisplayNames=,' $HOME/.config/kxkbrc
+sed -i '/\[Layout\]/a\LayoutList=us,bg' $HOME/.config/kxkbrc
 ;;
 14)
-echo ResetOldOptions=true >> $HOME/.config/kxkbrc
+echo >> $HOME/.config/kxkbrc
+if [ "$(grep "\[Layout\]" $HOME/.config/kxkbrc)" == "[Layout]" ] ; then
+    sed -i '/ResetOldOptions=/d' $HOME/.config/kxkbrc
+else
+    echo "[Layout]" >> $HOME/.config/kxkbrc
+fi
+sed -i '/\[Layout\]/a\ResetOldOptions=true' $HOME/.config/kxkbrc
 ;;
 15)
-sed -i '0,/Options=/s//Options=terminate:ctrl_alt_bksp,/' $HOME/.config/kxkbrc
+echo >> $HOME/.config/kxkbrc
+if [ "$(grep "\[Layout\]" $HOME/.config/kxkbrc)" == "[Layout]" ] ; then
+    sed -i '/^Options=/d' $HOME/.config/kxkbrc
+else
+    echo "[Layout]" >> $HOME/.config/kxkbrc
+fi
+sed -i '/\[Layout\]/a\Options=,terminate:ctrl_alt_bksp' $HOME/.config/kxkbrc
 ;;
 16)
-sed -i '0,/Options=/s//Options=grp:alt_shift_toggle,/' $HOME/.config/kxkbrc
+echo >> $HOME/.config/kxkbrc
+if [ "$(grep "\[Layout\]" $HOME/.config/kxkbrc)" == "[Layout]" ] ; then
+    sed -i '/^Options=/d' $HOME/.config/kxkbrc
+else
+    echo "[Layout]" >> $HOME/.config/kxkbrc
+fi
+sed -i '/\[Layout\]/a\Options=,terminate:ctrl_alt_bksp,grp:alt_shift_toggle' $HOME/.config/kxkbrc
 ;;
 17)
 
