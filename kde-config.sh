@@ -234,10 +234,22 @@ fi
 sed -i '/\[General\]/a\ShowFullPath=true' $HOME/.config/dolphinrc
 ;;
 22)
-sed -i 's/kactivitymanagerd_fileitem_linking_plugin=true/kactivitymanagerd_fileitem_linking_plugin=false/g' $HOME/.config/kservicemenurc
+if [ "$(grep "\[Show\]" $HOME/.config/kservicemenurc)" == "[Show]" ] ; then
+    sed -i '/kactivitymanagerd_fileitem_linking_plugin=/d' $HOME/.config/kservicemenurc
+else
+    echo >> $HOME/.config/kservicemenurc
+    echo "[Show]" >> $HOME/.config/kservicemenurc
+fi
+sed -i '/\[Show\]/a\kactivitymanagerd_fileitem_linking_plugin=false' $HOME/.config/kservicemenurc
 ;;
 23)
-sed -i 's/tagsfileitemaction=true/tagsfileitemaction=false/g' $HOME/.config/kservicemenurc
+if [ "$(grep "\[Show\]" $HOME/.config/kservicemenurc)" == "[Show]" ] ; then
+    sed -i '/tagsfileitemaction=/d' $HOME/.config/kservicemenurc
+else
+    echo >> $HOME/.config/kservicemenurc
+    echo "[Show]" >> $HOME/.config/kservicemenurc
+fi
+sed -i '/\[Show\]/a\tagsfileitemaction=false' $HOME/.config/kservicemenurc
 ;;
 24)
 
@@ -275,5 +287,9 @@ sed -i 's/tagsfileitemaction=true/tagsfileitemaction=false/g' $HOME/.config/kser
 esac
 done
 case "$ret" in
-*) exit ;;
+*)
+echo "----"
+echo "Done"
+echo "----"
+exit ;;
 esac
