@@ -20,11 +20,11 @@ options=(
 16 "System Settings - Inpute Devices - Keyboard - Advanced - Enable Switching to another layout" on
 17 "Dolphin - Change to Details view mode" on
 18 "Dolphin - Change Details view mode zoom to 32 pixels" on
-19 "Update KDE Configs with Apps" off
-20 "Change SDDM Theme to Breeze" off
-21 "Add Virtual Keyboard to SDDM" off
-22 "Change Swappiness to 10" off
-23 "Enable Timesync and Bluetooth Service" off
+19 "Dolphin - Configure - General - Behavior - Remember display style for each folder" on
+20 "Dolphin - Configure - Startup - Show on startup /home/" on
+21 "Dolphin - Configure - Startup - Show full path inside location bar" on
+22 "Dolphin - Configure - Context Menu - Disable Link files to Activities" on
+23 "Dolphin - Configure - Context Menu - Disable Tags" on
 24 "Enable Fstrim (for SSD optimization)" off
 25 "Disable Spectre and Meltdown" off
 26 "Enable Grub Last Choice (Not Work for Btrfs)" off
@@ -207,19 +207,37 @@ fi
 sed -i '/\[DetailsMode\]/a\PreviewSize=32' $HOME/.config/dolphinrc
 ;;
 19)
-
+if [ "$(grep "\[General\]" $HOME/.config/dolphinrc)" == "[General]" ] ; then
+    sed -i '/GlobalViewProps=/d' $HOME/.config/dolphinrc
+else
+    echo >> $HOME/.config/dolphinrc
+    echo "[General]" >> $HOME/.config/dolphinrc
+fi
+sed -i '/\[General\]/a\GlobalViewProps=false' $HOME/.config/dolphinrc
 ;;
 20)
-
+if [ "$(grep "\[General\]" $HOME/.config/dolphinrc)" == "[General]" ] ; then
+    sed -i '/RememberOpenedTabs=/d' $HOME/.config/dolphinrc
+else
+    echo >> $HOME/.config/dolphinrc
+    echo "[General]" >> $HOME/.config/dolphinrc
+fi
+sed -i '/\[General\]/a\RememberOpenedTabs=false' $HOME/.config/dolphinrc
 ;;
 21)
-
+if [ "$(grep "\[General\]" $HOME/.config/dolphinrc)" == "[General]" ] ; then
+    sed -i '/ShowFullPath=/d' $HOME/.config/dolphinrc
+else
+    echo >> $HOME/.config/dolphinrc
+    echo "[General]" >> $HOME/.config/dolphinrc
+fi
+sed -i '/\[General\]/a\ShowFullPath=true' $HOME/.config/dolphinrc
 ;;
 22)
-
+sed -i 's/kactivitymanagerd_fileitem_linking_plugin=true/kactivitymanagerd_fileitem_linking_plugin=false/g' $HOME/.config/kservicemenurc
 ;;
 23)
-
+sed -i 's/tagsfileitemaction=true/tagsfileitemaction=false/g' $HOME/.config/kservicemenurc
 ;;
 24)
 
