@@ -8,7 +8,7 @@ options=(
 4 "System Settings - Workpace Behavioor - General Behavior - Animation Speed +1" on
 5 "System Settings - Workpace Behavioor - General Behavior - Open Files With Duble Click" on
 6 "System Settings - Workpace Behavioor - Disable Screen Locking After 5min" on
-7 "System Settings - Disable Screen Locking After Waking From Sleep" on
+7 "System Settings - Workpace Behavioor - Disable Screen Locking After Waking From Sleep" on
 8 "System Settings - Shortcuts - Add Konsole to Open With Ctrl+Alt+T" on
 9 "System Settings - Shortcuts - KWin - Suspend Compositing - Change Default Shortcut to Ctrl+Alt+E " on
 10 "System Settings - Startup and Shutdown - Desktop Session - Start with an empty session " on
