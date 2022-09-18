@@ -18,8 +18,8 @@ options=(
 14 "System Settings - Inpute Devices - Keyboard - Advanced - Enable Configure keyboard options" on
 15 "System Settings - Inpute Devices - Keyboard - Advanced - Enable Key sequence to kill the X server" on
 16 "System Settings - Inpute Devices - Keyboard - Advanced - Enable Switching to another layout" on
-17 "Speed up AUR builds" off
-18 "Install Youtubedl-GUI" off
+17 "Dolphin - Change to Details view mode" on
+18 "Dolphin - Change Details view mode zoom to 32 pixels" on
 19 "Update KDE Configs with Apps" off
 20 "Change SDDM Theme to Breeze" off
 21 "Add Virtual Keyboard to SDDM" off
@@ -189,10 +189,22 @@ fi
 sed -i '/\[Layout\]/a\Options=,terminate:ctrl_alt_bksp,grp:alt_shift_toggle' $HOME/.config/kxkbrc
 ;;
 17)
-
+if [ "$(grep "\[Dolphin\]" $HOME/.local/share/dolphin/view_properties/global/.directory)" == "[Dolphin]" ] ; then
+    sed -i '/ViewMode=/d' $HOME/.local/share/dolphin/view_properties/global/.directory
+else
+    echo >> $HOME/.local/share/dolphin/view_properties/global/.directory
+    echo "[Dolphin]" >> $HOME/.local/share/dolphin/view_properties/global/.directory
+fi
+sed -i '/\[Dolphin\]/a\ViewMode=1' $HOME/.local/share/dolphin/view_properties/global/.directory
 ;;
 18)
-
+if [ "$(grep "\[DetailsMode\]" $HOME/.config/dolphinrc)" == "[DetailsMode]" ] ; then
+    sed -i '/PreviewSize=/d' $HOME/.config/dolphinrc
+else
+    echo >> $HOME/.config/dolphinrc
+    echo "[DetailsMode]" >> $HOME/.config/dolphinrc
+fi
+sed -i '/\[DetailsMode\]/a\PreviewSize=32' $HOME/.config/dolphinrc
 ;;
 19)
 
