@@ -83,6 +83,8 @@ sudo sh -c 'echo >> /etc/pacman.conf'
 4)
 git clone https://github.com/arch-linux-gui/arch-linux-gui-plasma $HOME/arch-linux-gui-plasma/
 cd $HOME/arch-linux-gui-plasma/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-plasma/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-plasma/
@@ -91,6 +93,8 @@ cd $HOME
 5)
 git clone https://github.com/arch-linux-gui/arch-linux-gui-gnome $HOME/arch-linux-gui-gnome/
 cd $HOME/arch-linux-gui-gnome/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-gnome/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-gnome/
@@ -99,6 +103,8 @@ cd $HOME
 6)
 git clone https://github.com/arch-linux-gui/arch-linux-gui-xfce $HOME/arch-linux-gui-xfce/
 cd $HOME/arch-linux-gui-xfce/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-xfce/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-xfce/
@@ -107,6 +113,8 @@ cd $HOME
 7)
 git clone https://github.com/arch-linux-gui/arch-linux-gui-cinnamon $HOME/arch-linux-gui-cinnamon/
 cd $HOME/arch-linux-gui-cinnamon/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-cinnamon/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-cinnamon/
@@ -115,6 +123,8 @@ cd $HOME
 8)
 git clone https://github.com/arch-linux-gui/alg-plasma-pure $HOME/alg-plasma-pure/
 cd $HOME/alg-plasma-pure/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-plasma-pure/out/* $HOME
 sudo rm -r $HOME/alg-plasma-pure/
@@ -123,6 +133,8 @@ cd $HOME
 9)
 git clone https://github.com/arch-linux-gui/alg-gnome-pure $HOME/alg-gnome-pure/
 cd $HOME/alg-gnome-pure/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-gnome-pure/out/* $HOME
 sudo rm -r $HOME/alg-gnome-pure/
@@ -131,6 +143,8 @@ cd $HOME
 10)
 git clone https://github.com/arch-linux-gui/alg-xfce-pure $HOME/alg-xfce-pure/
 cd $HOME/alg-xfce-pure/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-xfce-pure/out/* $HOME
 sudo rm -r $HOME/alg-xfce-pure/
@@ -139,6 +153,8 @@ cd $HOME
 11)
 git clone https://github.com/arch-linux-gui/alg-i3 $HOME/alg-i3/
 cd $HOME/alg-i3/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-i3/out/* $HOME
 sudo rm -r $HOME/alg-i3/
@@ -147,6 +163,8 @@ cd $HOME
 12)
 git clone https://github.com/arch-linux-gui/arch-linux-gui-zen $HOME/arch-linux-gui-zen/
 cd $HOME/arch-linux-gui-zen/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-zen/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-zen/
@@ -209,6 +227,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/arch-linux-gui-plasma/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/arch-linux-gui-plasma/airootfs/etc/mkinitcpio.conf
 cd $HOME/arch-linux-gui-plasma/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-plasma/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-plasma/
@@ -221,6 +241,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/arch-linux-gui-gnome/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/arch-linux-gui-gnome/airootfs/etc/mkinitcpio.conf
 cd $HOME/arch-linux-gui-gnome/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-gnome/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-gnome/
@@ -233,6 +255,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/arch-linux-gui-xfce/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/arch-linux-gui-xfce/airootfs/etc/mkinitcpio.conf
 cd $HOME/arch-linux-gui-xfce/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-xfce/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-xfce/
@@ -245,6 +269,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/arch-linux-gui-cinnamon//airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/arch-linux-gui-cinnamon//airootfs/etc/mkinitcpio.conf
 cd $HOME/arch-linux-gui-cinnamon/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-cinnamon/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-cinnamon/
@@ -257,6 +283,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/alg-plasma-pure/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/alg-plasma-pure/airootfs/etc/mkinitcpio.conf
 cd $HOME/alg-plasma-pure/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-plasma-pure/out/* $HOME
 sudo rm -r $HOME/alg-plasma-pure/
@@ -269,6 +297,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/alg-gnome-pure/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/alg-gnome-pure/airootfs/etc/mkinitcpio.conf
 cd $HOME/alg-gnome-pure/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-gnome-pure/out/* $HOME
 sudo rm -r $HOME/alg-gnome-pure/
@@ -281,6 +311,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/alg-xfce-pure/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/alg-xfce-pure/airootfs/etc/mkinitcpio.conf
 cd $HOME/alg-xfce-pure/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-xfce-pure/out/* $HOME
 sudo rm -r $HOME/alg-xfce-pure/
@@ -293,6 +325,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/alg-i3/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/alg-i3/airootfs/etc/mkinitcpio.conf
 cd $HOME/alg-i3/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-i3/out/* $HOME
 sudo rm -r $HOME/alg-i3/
@@ -305,6 +339,8 @@ sed -i "/airootfs_image_tool_options=/c\airootfs_image_tool_options=('-comp' 'zs
 sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' $HOME/arch-linux-gui-zen/airootfs/etc/mkinitcpio.conf
 sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/arch-linux-gui-zen/airootfs/etc/mkinitcpio.conf
 cd $HOME/arch-linux-gui-zen/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/arch-linux-gui-zen/out/* $HOME
 sudo rm -r $HOME/arch-linux-gui-zen/

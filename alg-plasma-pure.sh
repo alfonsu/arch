@@ -68,6 +68,8 @@ echo qt-fsarchiver >> $HOME/alg-plasma-pure/packages.x86_64
 ;;
 10)
 cd $HOME/alg-plasma-pure/
+sed -i '/ipw2100-fw/d' packages.x86_64
+sed -i '/ipw2200-fw/d' packages.x86_64
 sudo mkarchiso -v .
 ;;
 esac
