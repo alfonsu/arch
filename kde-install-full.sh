@@ -755,7 +755,7 @@ options=(
 2 "Install VirtualBox for Others Kernels (need headers)" off
 3 "Install CDemu for Latest Zen Kernel" off
 4 "Install CDemu for Others Kernels (need headers)" off
-5 "Install Anbox for Latest Zen Kernel" off
+5 "Install Anbox for All Kernels (need headers)" off
 6 "Install SVP (Smooth Video Project)" off
 7 "Install Minitube with (mpv-git)" off
 8 "Install TeamViewer" off
@@ -786,7 +786,15 @@ sudo pacman -S kde-cdemu-manager vhba-module-dkms --needed --noconfirm
 sed -i 's/mountisoaction=true/mountisoaction=false/g' $HOME/.config/kservicemenurc
 ;;
 5)
-sudo pacman -S anbox-support --needed --noconfirm
+pamac build anbox-modules-dkms-git --no-confirm
+sudo modprobe binder_linux
+sudo modprobe ashmem_linux
+sudo sed -i '/binderfs/d' /etc/fstab
+sudo sh -c 'echo "none                         /dev/binderfs binder   nofail  0      0" >> /etc/fstab'
+sudo pacman -S anbox-git --needed --noconfirm
+sudo systemctl enable --now systemd-networkd
+sudo systemctl enable --now anbox-container-manager.service
+sudo sed -i '/binderfs/d' /etc/fstab
 ;;
 6)
 #pamac build svp --no-confirm
@@ -837,14 +845,14 @@ esac
 }
 
 fixes (){
-cmd=(dialog --cancel-label "Back" --title "Fixes" --menu "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "Fixes" --separate-output --checklist "Select options:" 40 74 35)
 options=(
-1 "Sound-Fix (use if primary output channel is not correctly)"
-2 "USB-wakeup (use if usb wake up not working)"
-3 "Imwheel-Fix (use if imwheel cant autostart)"
-4 "MPV-Cyrillic-Fix (needed for Bulgarian and Russian Subtitles)"
-5 "Enable Nvidia Overclock (nvidia-xconfig --cool-bits=12)"
-6 "Enable Nvidia DRM (needed for wayland support)"
+1 "Sound-Fix (use if primary output channel is not correctly)" off
+2 "USB-wakeup (use if usb wake up not working)" off
+3 "Imwheel-Fix (use if imwheel cant autostart)" off
+4 "MPV-Cyrillic-Fix (needed for Bulgarian and Russian Subtitles)" off
+5 "Enable Nvidia Overclock (nvidia-xconfig --cool-bits=12)" off
+6 "Enable Nvidia DRM (needed for wayland support)" off
         )
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
