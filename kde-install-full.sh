@@ -410,7 +410,10 @@ sudo pacman -S nvidia-dkms nvidia-settings opencl-nvidia pkg-config --needed --n
 sudo pacman -S nvidia-470xx-dkms nvidia-470xx-settings opencl-nvidia-470xx pkg-config --needed --noconfirm
 ;;
 5)
-sudo pacman -S nvidia-390xx-dkms nvidia-390xx-settings opencl-nvidia-390xx pkg-config --needed --noconfirm
+sudo pacman -S pkg-config --needed --noconfirm
+pamac build nvidia-390xx-dkms --no-confirm
+pamac build nvidia-390xx-settings --no-confirm
+pamac build opencl-nvidia-390xx --no-confirm
 ;;
 6)
 sudo pacman -S pkg-config --needed --noconfirm
