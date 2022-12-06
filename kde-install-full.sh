@@ -391,6 +391,7 @@ options=(
 4 "NVIDIA 470xx Drivers for All Kernels (need headers)"
 5 "NVIDIA 390xx Drivers for All Kernels (need headers)"
 6 "NVIDIA 340xx Drivers for All Kernels (need headers)"
+7 "NVIDIA All Drivers for All Kernels (need headers)"
         )
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -423,6 +424,14 @@ pamac build opencl-nvidia-340xx --no-confirm
 sudo sh -c 'echo "Section \"ServerFlags\"" >> /etc/X11/xorg.conf.d/20-nvidia.conf'
 sudo sh -c 'echo "Option \"IgnoreABI\" \"1\"" >> /etc/X11/xorg.conf.d/20-nvidia.conf'
 sudo sh -c 'echo "EndSection" >> /etc/X11/xorg.conf.d/20-nvidia.conf'
+;;
+7)
+rm -rf nvidia-all
+git clone https://github.com/Frogging-Family/nvidia-all.git
+cd nvidia-all
+makepkg -si
+sudo mkinitcpio -P
+rm -rf nvidia-all
 ;;
 esac
 done
