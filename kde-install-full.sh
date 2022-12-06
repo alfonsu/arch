@@ -426,6 +426,7 @@ sudo sh -c 'echo "Option \"IgnoreABI\" \"1\"" >> /etc/X11/xorg.conf.d/20-nvidia.
 sudo sh -c 'echo "EndSection" >> /etc/X11/xorg.conf.d/20-nvidia.conf'
 ;;
 7)
+sudo pacman -S pkg-config --needed --noconfirm
 rm -rf nvidia-all
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
