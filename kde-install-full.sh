@@ -7,7 +7,7 @@ menu
 }
 
 menu (){
-cmd=(dialog --cancel-label "Exit" --title "Menu" --menu "Select options:" 40 70 35 )
+cmd=(dialog --cancel-label "Exit" --title "Menu" --menu "Select options:" 40 72 35 )
 options=(
 1 "Setup Plasma Pure"
 2 "HW-Acceleration"
@@ -63,7 +63,7 @@ esac
 }
 
 setup (){
-cmd=(dialog --cancel-label "Back" --title "Setup Plasma Pure" --separate-output --checklist "Select options:" 41 70 35)
+cmd=(dialog --cancel-label "Back" --title "Setup Plasma Pure" --separate-output --checklist "Select options:" 41 72 35)
 options=(
 1 "Bypass Sudo Password" on
 2 "Remove Discover" on
@@ -90,7 +90,7 @@ options=(
 23 "Enable Timesync and Bluetooth Service" on
 24 "Enable Fstrim (for SSD optimization)" on
 25 "Disable Spectre and Meltdown" on
-26 "Enable Grub Last Choice (Not Work for Btrfs)" on
+26 "Enable Grub Last Choice and OS Prober (Not Work for Btrfs)" on
 27 "Enable Vimix Grub Theme" on
 28 "Install Nohang - correctly prevent out of memory" on
 29 "Install and Enable Zram-Generator" off
@@ -248,7 +248,8 @@ sudo sed -i 's/quiet/mitigations=off quiet/g' /etc/default/grub
 ;;
 26)
 sudo sed -i 's/GRUB_DEFAULT=0/GRUB_DEFAULT=saved/g' /etc/default/grub
-sudo sed -i 's/#GRUB_SAVEDEFAULT="true"/GRUB_SAVEDEFAULT="true"/g' /etc/default/grub
+sudo sed -i 's/#GRUB_SAVEDEFAULT=true/GRUB_SAVEDEFAULT=true/g' /etc/default/grub
+sudo sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
 ;;
 27)
 sudo pacman -S grub-theme-vimix --needed --noconfirm
@@ -295,7 +296,7 @@ esac
 }
 
 hw-acceleration (){
-cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 72 35)
 options=(
 1 "Intel"
 2 "AMD"
@@ -335,7 +336,7 @@ esac
 }
 
 intel (){
-cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 72 35)
 options=(
 1 "VA-API on Intel GPUs 2008-2016"
 2 "VA-API on Intel GPUs 2017+"
@@ -359,7 +360,7 @@ esac
 }
 
 amd (){
-cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 72 35)
 options=(
 1 "VA-API on Radeon HD 2000 and newer GPUs"
 2 "VDPAU on Radeon R300 and newer GPUs"
@@ -383,7 +384,7 @@ esac
 }
 
 nvidia (){
-cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 72 35)
 options=(
 1 "NVIDIA Latest Drivers for Latest Arch Linux Kernel"
 2 "NVIDIA Latest Drivers for Latest Arch Linux-LTS Kernel"
@@ -442,7 +443,7 @@ esac
 }
 
 layers (){
-cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "HW-Acceleration" --menu "Select options:" 40 72 35)
 options=(
 1 "VDPAU-based backend for VA-API"
 2 "VDPAU-based backend for VA-API VP9"
@@ -478,7 +479,7 @@ esac
 }
 
 chromium (){
-cmd=(dialog --cancel-label "Back" --title "HW-Acceleration-Chromium" --separate-output --checklist "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "HW-Acceleration-Chromium" --separate-output --checklist "Select options:" 40 72 35)
 options=(
 1 "Remove Previous Settings" on
 2 "--ignore-gpu-blocklist" on
@@ -522,7 +523,7 @@ esac
 }
 
 chrome (){
-cmd=(dialog --cancel-label "Back" --title "HW-Acceleration-Chrome" --separate-output --checklist "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "HW-Acceleration-Chrome" --separate-output --checklist "Select options:" 40 72 35)
 options=(
 1 "Remove Previous Settings" on
 2 "--ignore-gpu-blocklist" on
@@ -566,7 +567,7 @@ esac
 }
 
 bluetooth (){
-cmd=(dialog --cancel-label "Back" --title "Bluetooth" --menu "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "Bluetooth" --menu "Select options:" 40 72 35)
 options=(
 1 "Headset via Pipewire"
 2 "Headset via Bluez5/PulseAudio"
@@ -594,7 +595,7 @@ esac
 }
 
 Headset-via-Pipewire (){
-cmd=(dialog --cancel-label "Back" --title "Headset via Pipewire" --separate-output --checklist "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "Headset via Pipewire" --separate-output --checklist "Select options:" 40 72 35)
 options=(
 1 "Install Headset via Pipewire" on
 2 "Enable Bluetooth Battery Level Reporting" on
@@ -618,7 +619,7 @@ esac
 }
 
 Headset-via-Bluez5/PulseAudio (){
-cmd=(dialog --cancel-label "Back" --title "Headset via Bluez5/PulseAudio" --separate-output --checklist "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "Headset via Bluez5/PulseAudio" --separate-output --checklist "Select options:" 40 72 35)
 options=(
 1 "Install Headset via Bluez5/PulseAudio" on
 2 "Enable Bluetooth Autoconnect" on
@@ -648,7 +649,7 @@ esac
 }
 
 CSR-Dongle-0a12:0001 (){
-cmd=(dialog --cancel-label "Back" --title "CSR Dongle 0a12:0001" --separate-output --checklist "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "CSR Dongle 0a12:0001" --separate-output --checklist "Select options:" 40 72 35)
 options=(
 1 "Fix CSR Dongle 0a12:0001" on
 2 "Install Linux-LTS-5.10" on
@@ -680,7 +681,7 @@ esac
 }
 
 gaming (){
-cmd=(dialog --cancel-label "Back" --title "Gaming" --separate-output --checklist "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "Gaming" --separate-output --checklist "Select options:" 40 72 35)
 options=(
 1 "Install Wine" on
 2 "Install PlayOnLinux" off
@@ -762,7 +763,7 @@ esac
 }
 
 extra-soft (){
-cmd=(dialog --cancel-label "Back" --title "Extra Soft" --separate-output --checklist "Select options:" 40 70 35)
+cmd=(dialog --cancel-label "Back" --title "Extra Soft" --separate-output --checklist "Select options:" 40 72 35)
 options=(
 1 "Install VirtualBox for Latest Arch Linux Kernel" off
 2 "Install VirtualBox for Others Kernels (need headers)" off
