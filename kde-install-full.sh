@@ -187,12 +187,14 @@ sudo systemctl start teamviewerd
 sudo pacman -S ttf-ms-fonts libreoffice-fresh libreoffice-fresh-bg --needed --noconfirm
 ;;
 14)
-sudo pacman -S pamac-nosnap pamac-tray-icon-plasma yay base-devel update-grub downgrade
+yes | sudo pacman -S pamac-nosnap pamac-tray-icon-plasma yay base-devel update-grub downgrade
 flatpak update
-sudo sed -i 's/#RemoveUnrequiredDeps/RemoveUnrequiredDeps/g' /etc/pamac.conf
-sudo sed -i 's/#EnableAUR/EnableAUR/g' /etc/pamac.conf
-sudo sed -i 's/#KeepBuiltPkgs/KeepBuiltPkgs/g' /etc/pamac.conf
-sudo sed -i 's/#CheckAURUpdates/CheckAURUpdates/g' /etc/pamac.conf
+sudo sh -c 'echo >> /etc/pamac.conf'
+sudo sh -c 'echo "CheckFlatpakUpdates" >> /etc/pamac.conf'
+sudo sh -c 'echo >> /etc/pamac.conf'
+sudo sh -c 'echo "#EnableSnap" >> /etc/pamac.conf'
+sudo sh -c 'echo >> /etc/pamac.conf'
+sudo sh -c 'echo "EnableFlatpak" >> /etc/pamac.conf'
 ;;
 15)
 yes | sudo pacman -S pamac-aur pamac-tray-icon-plasma yay base-devel update-grub downgrade
