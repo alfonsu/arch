@@ -78,7 +78,7 @@ options=(
 11 "Install Basic KDE Apps and Multimedia Programs" on
 12 "Install Extra Programs for Alfonsu" off
 13 "Install Libreoffice-Fresh and MS-Fonts" off
-14 "Install Flatpak" off
+14 "Install Pamac with Flatpak and Yay" off
 15 "Install Pamac and Yay" on
 16 "Update Pamac config" on
 17 "Speed up AUR builds" on
@@ -187,7 +187,12 @@ sudo systemctl start teamviewerd
 sudo pacman -S ttf-ms-fonts libreoffice-fresh libreoffice-fresh-bg --needed --noconfirm
 ;;
 14)
-sudo pacman -S flatpak --needed --noconfirm
+sudo pacman -S pamac-nosnap pamac-tray-icon-plasma yay base-devel update-grub downgrade
+flatpak update
+sudo sed -i 's/#RemoveUnrequiredDeps/RemoveUnrequiredDeps/g' /etc/pamac.conf
+sudo sed -i 's/#EnableAUR/EnableAUR/g' /etc/pamac.conf
+sudo sed -i 's/#KeepBuiltPkgs/KeepBuiltPkgs/g' /etc/pamac.conf
+sudo sed -i 's/#CheckAURUpdates/CheckAURUpdates/g' /etc/pamac.conf
 ;;
 15)
 yes | sudo pacman -S pamac-aur pamac-tray-icon-plasma yay base-devel update-grub downgrade
