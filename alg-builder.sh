@@ -125,7 +125,7 @@ git clone https://github.com/arch-linux-gui/alg-plasma-pure $HOME/alg-plasma-pur
 cd $HOME/alg-plasma-pure/
 sed -i '/ipw2100-fw/d' packages.x86_64
 sed -i '/ipw2200-fw/d' packages.x86_64
-echo kwallet >> packages.x86_64
+echo kwalletmanager >> packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-plasma-pure/out/* $HOME
 sudo rm -r $HOME/alg-plasma-pure/
@@ -286,7 +286,7 @@ sed -i 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' $HOME/alg-plasma-pure/airoot
 cd $HOME/alg-plasma-pure/
 sed -i '/ipw2100-fw/d' packages.x86_64
 sed -i '/ipw2200-fw/d' packages.x86_64
-echo kwallet >> packages.x86_64
+echo kwalletmanager >> packages.x86_64
 sudo mkarchiso -v .
 sudo mv $HOME/alg-plasma-pure/out/* $HOME
 sudo rm -r $HOME/alg-plasma-pure/
