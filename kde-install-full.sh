@@ -128,7 +128,7 @@ echo "[super-user-command]" >> $HOME/.config/kdesurc
 echo "super-user-command=sudo" >> $HOME/.config/kdesurc
 ;;
 2)
-sudo pacman -Rs discover --noconfirm
+sudo pacman -Rs discover lftp --noconfirm
 ;;
 3)
 sudo systemctl stop reflector.service
