@@ -190,7 +190,7 @@ sudo pacman -S ttf-ms-fonts libreoffice-fresh libreoffice-fresh-bg --needed --no
 sudo pacman -S flatpak --needed --noconfirm
 ;;
 15)
-yes | sudo pacman -S pamac-aur pamac-tray-icon-plasma yay update-grub downgrade
+yes | sudo pacman -S pamac-aur pamac-tray-icon-plasma yay base-devel update-grub downgrade
 ;;
 16)
 sudo sed -i 's/#RemoveUnrequiredDeps/RemoveUnrequiredDeps/g' /etc/pamac.conf
@@ -830,8 +830,9 @@ echo '#opengl-early-flush=yes' >> $HOME/.config/mpv/mpv.conf
 ;;
 7)
 sudo pacman -S mpv-git --needed --noconfirm
-sudo cp /usr/lib/libmpv.so /usr/lib/libmpv.so.1
-sudo pacman -S minitube-mpv-git --needed --noconfirm
+sudo pacman -S minitube --needed --noconfirm
+#sudo cp /usr/lib/libmpv.so /usr/lib/libmpv.so.1
+#sudo pacman -S minitube-mpv-git --needed --noconfirm
 ;;
 8)
 sudo pacman -S teamviewer --needed --noconfirm
