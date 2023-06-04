@@ -491,11 +491,10 @@ cmd=(dialog --cancel-label "Back" --title "HW-Acceleration-Chromium" --separate-
 options=(
 1 "Remove Previous Settings" on
 2 "--ignore-gpu-blocklist" on
-3 "--enable-gpu-rasterization" on
-4 "--enable-zero-copy" on
-5 "--enable-features=VaapiVideoDecoder" on
-6 "--disable-features=UseChromeOSDirectVideoDecoder" on
-7 "--use-gl=desktop" off
+3 "--enable-zero-copy" on
+4 "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder" on
+5 "--disable-features=UseChromeOSDirectVideoDecoder" on
+6 "Add LIBVA_DRI3_DISABLE=1 for OLD Intel GPU-z (need restart)" off
         )
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -509,19 +508,16 @@ rm -f $HOME/.config/chromium-flags.conf
 echo --ignore-gpu-blocklist >> $HOME/.config/chromium-flags.conf
 ;;
 3)
-echo --enable-gpu-rasterization >> $HOME/.config/chromium-flags.conf
-;;
-4)
 echo --enable-zero-copy >> $HOME/.config/chromium-flags.conf
 ;;
-5)
-echo --enable-features=VaapiVideoDecoder >> $HOME/.config/chromium-flags.conf
+4)
+echo --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization,RawDraw >> $HOME/.config/chromium-flags.conf
 ;;
-6)
+5)
 echo --disable-features=UseChromeOSDirectVideoDecoder >> $HOME/.config/chromium-flags.conf
 ;;
-7)
-echo --use-gl=desktop >> $HOME/.config/chromium-flags.conf
+6)
+sudo sh -c 'echo "LIBVA_DRI3_DISABLE=1" >> /etc/environment'
 ;;
 esac
 done
@@ -535,11 +531,10 @@ cmd=(dialog --cancel-label "Back" --title "HW-Acceleration-Chrome" --separate-ou
 options=(
 1 "Remove Previous Settings" on
 2 "--ignore-gpu-blocklist" on
-3 "--enable-gpu-rasterization" on
-4 "--enable-zero-copy" on
-5 "--enable-features=VaapiVideoDecoder" on
-6 "--disable-features=UseChromeOSDirectVideoDecoder" on
-7 "--use-gl=desktop" off
+3 "--enable-zero-copy" on
+4 "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder" on
+5 "--disable-features=UseChromeOSDirectVideoDecoder" on
+6 "Add LIBVA_DRI3_DISABLE=1 for OLD Intel GPU-z (need restart)" off
         )
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -553,19 +548,16 @@ rm -f $HOME/.config/chrome-flags.conf
 echo --ignore-gpu-blocklist >> $HOME/.config/chrome-flags.conf
 ;;
 3)
-echo --enable-gpu-rasterization >> $HOME/.config/chrome-flags.conf
-;;
-4)
 echo --enable-zero-copy >> $HOME/.config/chrome-flags.conf
 ;;
-5)
-echo --enable-features=VaapiVideoDecoder >> $HOME/.config/chrome-flags.conf
+4)
+echo --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization,RawDraw >> $HOME/.config/chrome-flags.conf
 ;;
-6)
+5)
 echo --disable-features=UseChromeOSDirectVideoDecoder >> $HOME/.config/chrome-flags.conf
 ;;
-7)
-echo --use-gl=desktop >> $HOME/.config/chrome-flags.conf
+6)
+sudo sh -c 'echo "LIBVA_DRI3_DISABLE=1" >> /etc/environment'
 ;;
 esac
 done
