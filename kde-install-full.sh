@@ -892,6 +892,9 @@ do
 case $choice in
 1)
 sudo sh -c 'echo "set-sink-port 0 analog-output-lineout" >> /etc/pulse/default.pa'
+sudo sh -c 'echo "#!/bin/sh" >> /etc/profile.d/sound-fix.sh'
+sudo sh -c 'echo "pactl -- set-sink-volume 0 50%" >> /etc/profile.d/sound-fix.sh'
+sudo sh -c 'echo "pactl -- set-source-volume 3 250%" >> /etc/profile.d/sound-fix.sh'
 ;;
 2)
 sudo rm -f /etc/rc.d/rc.local
