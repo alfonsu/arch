@@ -714,7 +714,15 @@ for choice in $choices
 do
 case $choice in
 1)
-sudo pacman -S wine wine-gecko wine-mono winetricks wine-installer --needed --noconfirm
+sudo pacman -S wine wine-gecko wine-mono zenity winetricks-git wine-installer --needed --noconfirm
+echo [Desktop Entry] >> $HOME/.local/share/applications/wine-prefix.desktop
+echo Name=Create 32-bit Wine Prefix >> $HOME/.local/share/applications/wine-prefix.desktop
+echo Comment=Create 32-bit Wine Prefix for better compatibility >> $HOME/.local/share/applications/wine-prefix.desktop
+echo "Exec=rm -rf $HOME/.wine; WINEARCH=win32 wine wineboot" >> $HOME/.local/share/applications/wine-prefix.desktop
+echo Terminal=false >> $HOME/.local/share/applications/wine-prefix.desktop
+echo Type=Application >> $HOME/.local/share/applications/wine-prefix.desktop
+echo Icon=wine >> $HOME/.local/share/applications/wine-prefix.desktop
+echo Categories=Wine-Programs-Accessories >> $HOME/.local/share/applications/wine-prefix.desktop
 ;;
 2)
 sudo pacman -S playonlinux --needed --noconfirm
