@@ -91,7 +91,7 @@ options=(
 23 "Enable Timesync and Bluetooth Service" on
 24 "Enable Fstrim (for SSD optimization)" on
 25 "Disable Spectre and Meltdown" on
-26 "Enable Grub Last Choice and OS Prober (Not Work for Btrfs)" on
+26 "Enable Grub Last Choice (Not Work for Btrfs)" on
 27 "Enable Vimix Grub Theme" on
 28 "Install Nohang - correctly prevent out of memory" on
 29 "Install and Enable Zram-Generator" off
@@ -256,8 +256,7 @@ sudo sed -i 's/quiet/mitigations=off quiet/g' /etc/default/grub
 ;;
 26)
 sudo sed -i 's/GRUB_DEFAULT=0/GRUB_DEFAULT=saved/g' /etc/default/grub
-sudo sed -i 's/#GRUB_SAVEDEFAULT=true/GRUB_SAVEDEFAULT=true/g' /etc/default/grub
-sudo sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
+sudo sed -i 's/#GRUB_SAVEDEFAULT="true"/GRUB_SAVEDEFAULT=true/g' /etc/default/grub
 ;;
 27)
 sudo pacman -S grub-theme-vimix --needed --noconfirm
