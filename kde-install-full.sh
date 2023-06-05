@@ -45,7 +45,6 @@ fixes
 pamac clean -b --no-confirm
 yes | sudo pacman -Scc
 yes | yay -Scc
-sudo rm -r /var/tmp/
 menu
 ;;
 8)
