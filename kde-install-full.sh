@@ -876,6 +876,7 @@ options=(
 4 "MPV-Cyrillic-Fix (needed for Bulgarian and Russian Subtitles)" off
 5 "Enable Nvidia Overclock (nvidia-xconfig --cool-bits=12)" off
 6 "Enable Nvidia DRM (needed for wayland support)" off
+7 "Change Grub Resolution to 1024x768" off
         )
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -927,6 +928,10 @@ sudo nvidia-xconfig --cool-bits=12
 ;;
 6)
 sudo sed -i 's/quiet/nvidia-drm.modeset=1 quiet/g' /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+;;
+7)
+sudo sed -i 's/GRUB_GFXMODE=auto/GRUB_GFXMODE=1024x768/g' /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ;;
 esac
