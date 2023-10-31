@@ -134,7 +134,7 @@ sudo pacman -Rs discover lftp --noconfirm
 sudo systemctl stop reflector.service
 sudo systemctl disable reflector.service
 sudo rm -f /etc/pacman.d/mirrorlist
-sudo sh -c 'echo "Server = https://mirror.telepoint.bg/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist'
+sudo sh -c 'echo "Server = http://mirror.telepoint.bg/archlinux/\$repo/os/\$arch" >> /etc/pacman.d/mirrorlist'
 ;;
 4)
 sudo sed -i '/COMPRESSION="xz"/c\#COMPRESSION="xz"\' /etc/mkinitcpio.conf
