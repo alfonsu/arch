@@ -71,6 +71,7 @@ cd $HOME/alg-plasma-pure/
 sed -i '/ipw2100-fw/d' packages.x86_64
 sed -i '/ipw2200-fw/d' packages.x86_64
 echo kwalletmanager >> packages.x86_64
+echo plasma-wayland-session >> packages.x86_64
 sudo mkarchiso -v .
 ;;
 esac
