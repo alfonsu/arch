@@ -872,9 +872,10 @@ options=(
 2 "USB-wakeup (use if usb wake up not working)" off
 3 "Imwheel-Fix (use if imwheel cant autostart)" off
 4 "MPV-Cyrillic-Fix (needed for Bulgarian and Russian Subtitles)" off
-5 "Enable Nvidia Overclock (nvidia-xconfig --cool-bits=12)" off
-6 "Enable Nvidia DRM (needed for wayland support)" off
-7 "Change Grub Resolution to 1024x768" off
+5 "MPV-Volume-Boost (increase mpv volume to 200%)" off
+6 "Enable Nvidia Overclock (nvidia-xconfig --cool-bits=12)" off
+7 "Enable Nvidia DRM (needed for wayland support)" off
+8 "Change Grub Resolution to 1024x768" off
         )
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -922,13 +923,16 @@ sudo sh -c 'echo "imwheel -b 45" >> /etc/profile.d/startup.sh'
 echo subcp=cp1251 >> $HOME/.config/mpv/mpv.conf
 ;;
 5)
-sudo nvidia-xconfig --cool-bits=12
+echo volume-max=200 >> $HOME/.config/mpv/mpv.conf
 ;;
 6)
+sudo nvidia-xconfig --cool-bits=12
+;;
+7)
 sudo sed -i 's/quiet/nvidia-drm.modeset=1 quiet/g' /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ;;
-7)
+8)
 sudo sed -i 's/GRUB_GFXMODE=auto/GRUB_GFXMODE=1024x768/g' /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ;;
