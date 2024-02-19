@@ -820,7 +820,7 @@ sudo sed -i '/binderfs/d' /etc/fstab
 #pamac build svp-bin --no-confirm
 #pamac build mpv-git --no-confirm
 sudo pacman -S svp-bin --needed --noconfirm
-sudo pacman -S mpv-vapoursynth-git --needed --noconfirm
+sudo pacman -S mpv-git --needed --noconfirm
 sudo pacman -S ocl-icd --needed --noconfirm
 rm -rf $HOME/.config/mpv/
 mkdir $HOME/.config/mpv/
@@ -835,7 +835,7 @@ echo hwdec-codecs=all >> $HOME/.config/mpv/mpv.conf
 echo '#opengl-early-flush=yes' >> $HOME/.config/mpv/mpv.conf
 ;;
 7)
-sudo pacman -S mpv-vapoursynth-git --needed --noconfirm
+sudo pacman -S mpv-git --needed --noconfirm
 sudo pacman -S minitube --needed --noconfirm
 #sudo cp /usr/lib/libmpv.so /usr/lib/libmpv.so.1
 #sudo pacman -S minitube-mpv-git --needed --noconfirm
