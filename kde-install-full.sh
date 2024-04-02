@@ -179,7 +179,7 @@ sudo pacman -Syyu --noconfirm
 sudo pacman -S ark p7zip unrar unarchiver gwenview okular filelight ffmpegthumbs chromium qbittorrent audacious vlc guvcview gparted gpart exfatprogs gnome-calculator icoutils systemdgenie grub-customizer imwheel onboard encfs kdeconnect --needed --noconfirm
 ;;
 12)
-sudo pacman -S htop ksysguard kompare gimp filezilla ferdium-bin telegram-desktop gnome-keyring skypeforlinux-stable-bin teamviewer anydesk-bin obs-studio qmplay2-git --needed --noconfirm
+sudo pacman -S htop kompare gimp filezilla ferdium-bin telegram-desktop gnome-keyring skypeforlinux-stable-bin teamviewer anydesk-bin obs-studio qmplay2-git --needed --noconfirm
 sudo systemctl enable teamviewerd
 sudo systemctl start teamviewerd
 ;;
