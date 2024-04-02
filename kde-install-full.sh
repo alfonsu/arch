@@ -70,7 +70,7 @@ options=(
 3 "Bulgarian Mirrorlist" on
 4 "Zstd in mkinitcpio" on
 5 "Enable [multilib]" on
-6 "Add [alg_repo]" off
+6 "Add [alg-repo]" off
 7 "Add [alg-settings]" off
 8 "Add [alfonsu_repo]" on
 9 "Add [chaotic-aur]" on
@@ -146,7 +146,7 @@ sudo sed -i 's/#\[multilib\]/\[multilib\]/g' /etc/pacman.conf
 ;;
 6)
 sudo sh -c 'echo >> /etc/pacman.conf'
-sudo sh -c 'echo [alg_repo] >> /etc/pacman.conf'
+sudo sh -c 'echo [alg-repo] >> /etc/pacman.conf'
 sudo sh -c 'echo SigLevel = Optional TrustedOnly >> /etc/pacman.conf'
 sudo sh -c 'echo Server = https://arch-linux-gui.github.io/\$repo/\$arch >> /etc/pacman.conf'
 ;;
