@@ -176,10 +176,10 @@ sudo sh -c 'echo >> /etc/pacman.conf'
 sudo pacman -Syyu --noconfirm
 ;;
 11)
-sudo pacman -S ark p7zip unrar unarchiver gwenview okular filelight ffmpegthumbs chromium qbittorrent audacious vlc guvcview gparted gpart exfatprogs gnome-calculator icoutils systemdgenie grub-customizer imwheel onboard encfs kdeconnect --needed --noconfirm
+sudo pacman -S ark p7zip unrar unarchiver gwenview okular filelight ffmpegthumbs chromium qbittorrent vlc guvcview gparted gpart exfatprogs gnome-calculator icoutils systemdgenie grub-customizer onboard encfs kdeconnect --needed --noconfirm
 ;;
 12)
-sudo pacman -S htop kompare gimp filezilla ferdium-bin telegram-desktop gnome-keyring skypeforlinux-stable-bin teamviewer anydesk-bin obs-studio qmplay2-git --needed --noconfirm
+sudo pacman -S htop kompare gimp filezilla ferdium-bin telegram-desktop gnome-keyring skypeforlinux-bin teamviewer anydesk-bin obs-studio qmplay2-git --needed --noconfirm
 sudo systemctl enable teamviewerd
 sudo systemctl start teamviewerd
 ;;
@@ -188,7 +188,6 @@ sudo pacman -S ttf-ms-fonts libreoffice-fresh libreoffice-fresh-bg --needed --no
 ;;
 14)
 yes | sudo pacman -S pamac-nosnap pamac-nosnap-tray-icon-plasma yay base-devel update-grub downgrade
-flatpak update
 sudo sh -c 'echo >> /etc/pamac.conf'
 sudo sh -c 'echo "CheckFlatpakUpdates" >> /etc/pamac.conf'
 sudo sh -c 'echo >> /etc/pamac.conf'
@@ -237,7 +236,6 @@ sudo sh -c 'echo MaximumUid=60513 >> /etc/sddm.conf.d/kde_settings.conf'
 sudo sh -c 'echo MinimumUid=1000 >> /etc/sddm.conf.d/kde_settings.conf'
 ;;
 21)
-sudo pacman -S qt5-virtualkeyboard --needed --noconfirm
 sudo sh -c 'echo InputMethod=qtvirtualkeyboard >> /etc/sddm.conf.d/virtualkeyboard.conf'
 ;;
 22)
@@ -820,7 +818,7 @@ sudo sed -i '/binderfs/d' /etc/fstab
 #pamac build svp-bin --no-confirm
 #pamac build mpv-git --no-confirm
 sudo pacman -S svp-bin --needed --noconfirm
-sudo pacman -S mpv-git --needed --noconfirm
+sudo pacman -S mpv-full --needed --noconfirm
 sudo pacman -S ocl-icd --needed --noconfirm
 rm -rf $HOME/.config/mpv/
 mkdir $HOME/.config/mpv/
@@ -846,7 +844,7 @@ sudo systemctl enable teamviewerd
 sudo systemctl start teamviewerd
 ;;
 9)
-sudo pacman -S gnome-keyring skypeforlinux-stable-bin --needed --noconfirm
+sudo pacman -S gnome-keyring skypeforlinux-bin --needed --noconfirm
 ;;
 10)
 sudo pacman -S wget --needed --noconfirm
