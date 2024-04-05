@@ -176,7 +176,7 @@ sudo sh -c 'echo >> /etc/pacman.conf'
 sudo pacman -Syyu --noconfirm
 ;;
 11)
-sudo pacman -S ark p7zip unrar unarchiver gwenview okular filelight ffmpegthumbs chromium qbittorrent vlc guvcview gparted gpart exfatprogs gnome-calculator icoutils systemdgenie grub-customizer onboard encfs kdeconnect --needed --noconfirm
+sudo pacman -S ark p7zip unrar unarchiver gwenview okular filelight ffmpegthumbs firefox firefox-i18n-bg firefox-ublock-origin qbittorrent vlc guvcview gparted gpart exfatprogs gnome-calculator icoutils systemdgenie grub-customizer onboard encfs kdeconnect --needed --noconfirm
 ;;
 12)
 sudo pacman -S htop kompare gimp filezilla ferdium-bin telegram-desktop gnome-keyring skypeforlinux-bin teamviewer anydesk-bin obs-studio qmplay2-git --needed --noconfirm
