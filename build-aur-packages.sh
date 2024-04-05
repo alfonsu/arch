@@ -54,7 +54,7 @@ git clone https://aur.archlinux.org/youtubedl-gui $HOME/aur
 cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 8)
-git clone https://aur.archlinux.org/svp $HOME/aur
+git clone https://aur.archlinux.org/svp-bin $HOME/aur
 cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 9)
