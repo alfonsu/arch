@@ -1,7 +1,7 @@
 #!/bin/bash
 
 start (){
-sudo pacman -S dialog --needed --noconfirm
+sudo pacman -S dialog git base-devel --needed --noconfirm
 menu
 }
 
@@ -26,47 +26,46 @@ for choice in $choices
 do
 case $choice in
 1)
-pamac build whdd --no-confirm
-cp /var/cache/pacman/pkg/whdd* $HOME
+git clone https://aur.archlinux.org/whdd $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 2)
-pamac build hdsentinel --no-confirm
-cp /var/cache/pacman/pkg/hdsentinel* $HOME
+git clone https://aur.archlinux.org/hdsentinel $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 3)
-pamac build hdsentinel_gui --no-confirm
-cp /var/cache/pacman/pkg/hdsentinel_gui* $HOME
+git clone https://aur.archlinux.org/hdsentinel_gui $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 4)
-pamac build spectre-meltdown-checker --no-confirm
-cp /var/cache/pacman/pkg/spectre-meltdown-checker* $HOME
+git clone https://aur.archlinux.org/spectre-meltdown-checker $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 5)
-pamac build qmplay2 --no-confirm
-cp /var/cache/pacman/pkg/qmplay2* $HOME
+git clone https://aur.archlinux.org/qmplay2 $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 6)
-pamac build yt-dlp-drop-in --no-confirm
-cp /var/cache/pacman/pkg/yt-dlp-drop-in* $HOME
+git clone https://aur.archlinux.org/yt-dlp-drop-in $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 7)
-pamac build youtubedl-gui --no-confirm
-cp /var/cache/pacman/pkg/youtubedl-gui* $HOME
+git clone https://aur.archlinux.org/youtubedl-gui $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 8)
-pamac build svp --no-confirm
-cp /var/cache/pacman/pkg/svp* $HOME
+git clone https://aur.archlinux.org/svp $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 9)
-pamac build mpv-git --no-confirm
-cp /var/cache/pacman/pkg/mpv-git* $HOME
+git clone https://aur.archlinux.org/mpv-git $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 10)
-pamac build libstrangle-git --no-confirm
-cp /var/cache/pacman/pkg/libstrangle-git* $HOME
+git clone https://aur.archlinux.org/libstrangle-git $HOME/aur
+cd $HOME/aur; makepkg -src --noconfirm; rm *debug*; mv *zst $HOME; rm -rf $HOME/aur; cd $HOME
 ;;
 11)
-pamac clean -b --no-confirm
 yes | sudo pacman -Scc
 ;;
 esac
