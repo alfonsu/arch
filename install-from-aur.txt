@@ -1,0 +1,2 @@
+git clone https://aur.archlinux.org/popcorntime-bin $HOME/aur
+cd $HOME/aur; makepkg -sirc --noconfirm; rm -rf $HOME/aur; cd $HOME
