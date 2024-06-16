@@ -206,6 +206,7 @@ sudo sed -i 's/#CheckAURUpdates/CheckAURUpdates/g' /etc/pamac.conf
 ;;
 17)
 sudo sed -i 's,#MAKEFLAGS="-j2",MAKEFLAGS="-j$(nproc)",g' /etc/makepkg.conf
+sudo sed -i 's/--ultra -20/-1/g' /etc/makepkg.conf
 ;;
 18)
 sudo pacman -S yt-dlp-drop-in --needed --noconfirm
