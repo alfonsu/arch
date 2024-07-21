@@ -816,11 +816,8 @@ sudo systemctl enable --now anbox-container-manager.service
 sudo sed -i '/binderfs/d' /etc/fstab
 ;;
 6)
-#pamac build svp-bin --no-confirm
-#pamac build mpv-git --no-confirm
 sudo pacman -S svp-bin --needed --noconfirm
-sudo pacman -S mpv-full --needed --noconfirm
-sudo pacman -S ocl-icd --needed --noconfirm
+sudo pacman -S ocl-icd mpv vapoursynth --needed --noconfirm
 rm -rf $HOME/.config/mpv/
 mkdir $HOME/.config/mpv/
 echo profile=svp >> $HOME/.config/mpv/mpv.conf
